@@ -1,26 +1,27 @@
 import { Button } from "react-bootstrap";
 import React, { useState } from "react";
+import CustomButton from "./Button";
+import Count from "./Count";
 
 const Counter = () => {
   const [count, setCount] = useState(0);
 
+  const addOne = () => setCount(count + 1);
+  const subtractOne = () => setCount(count - 1);
+
   return (
     <div style={{ margin: "4rem" }}>
-      <h1 style={{ marginBottom: "2rem" }}>{count}</h1>
-      <Button
-        variant="danger"
-        style={{ marginRight: "0.5rem" }}
-        onClick={() => setCount(count - 1)}
-      >
-        -1
-      </Button>
-      <Button
-        variant="success"
-        style={{ marginLeft: "0.5rem" }}
-        onClick={() => setCount(count + 1)}
-      >
-        +1
-      </Button>
+      <Count count={count} />
+      {/* <h1 style={{ marginBottom: "2rem" }}>{count}</h1> */}
+
+      <div style={{ display: "flex", justifyContent: "center" }}>
+        <CustomButton margin={{ marginRight: "0.5rem" }} onClick={subtractOne}>
+          -1
+        </CustomButton>
+        <CustomButton margin={{ marginLeft: "0.5rem" }} onClick={addOne}>
+          +1
+        </CustomButton>
+      </div>
     </div>
   );
 };
